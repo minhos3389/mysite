@@ -29,8 +29,17 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
+# I Inform that we will use those app to Django
+'''
+django.contrib.admin- 관리용 사이트.
+django.contrib.auth - 인증시스템.
+django.contrib.sessions - 세션 프레임워크.
+django.contrib.messages - 메세징 프레임워크.
+django.contrib.staticfiles - 정적 파일을 관리하는 프레임워크.
+'''
 
 INSTALLED_APPS = [
+    'polls.apps.PollsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -72,7 +81,7 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-
+# If you want to change DataBase you can change .
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -83,6 +92,7 @@ DATABASES = {
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
