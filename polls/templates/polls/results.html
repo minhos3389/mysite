@@ -2,6 +2,7 @@
 
 <ul>
 {% for choice in question.choice_set.all %}
+    <!-- pluaralize는 vote가 단수일 경우 단수처리하고, 복수일 경우 복수처리하겠다는 템플릿 기능 이다. -->
     <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
 {% endfor %}
 </ul>

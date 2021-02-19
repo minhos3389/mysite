@@ -4,6 +4,7 @@ from django.template import loader
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse 
 from django.views import generic
+from django.utils import timezone
 
 from .models import Choice, Question
 
@@ -16,7 +17,15 @@ class IndexView(generic.ListView):
 
     def get_queryset(self):
         """ Return the last five published questions"""
-        return Question.objects.order_by('-pub_date')[:5]
+        # return Question.objects.order_by('-pub_date')[:5]
+        # pub_date__lte는 장고에서 제공하는 filter조건이다. 현재시간보다 작거나같은 값을 가져오라는것.
+        '''
+        Question.objects.filter (pub_date__lte = timezone.now ())는
+        timezone.now보다 pub_date가 작거나 같은 Question을 포함하는 queryset을 반환.
+        '''
+        return Question.objects.filter(
+            pub_date__lte=timezone.now()
+        ).order_by('-pub_date')[:5]
 
 class DetailView(generic.DetailView):
     model = Question
